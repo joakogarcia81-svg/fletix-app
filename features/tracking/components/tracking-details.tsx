@@ -99,7 +99,7 @@ export function TrackingDetails({ trip, onClose }: TrackingDetailsProps) {
                   <div 
                     className="h-full rounded-full transition-all duration-1000"
                     style={{ 
-                      width: \`\${Math.max(5, 100 - (trip.distanceRemaining / 500) * 100)}%\`,
+                      width: `${Math.max(5, 100 - (trip.distanceRemaining / 500) * 100)}%`,
                       backgroundColor: statusColor 
                     }}
                   />

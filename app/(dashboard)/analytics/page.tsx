@@ -8,12 +8,12 @@ import { BarChart2, Calendar, Download, Loader2 } from 'lucide-react';
 
 const AnalyticsCharts = dynamic(
   () => import('@/features/analytics/components/analytics-charts').then(mod => mod.AnalyticsCharts),
-  { ssr: false, loading: () => <div className="h-[300px] w-full animate-pulse bg-neutral-900 rounded-3xl mt-6 border border-neutral-800" /> }
+  { loading: () => <div className="h-[300px] w-full animate-pulse bg-neutral-900 rounded-3xl mt-6 border border-neutral-800" /> }
 );
 
 const AnalyticsTable = dynamic(
   () => import('@/features/analytics/components/analytics-table').then(mod => mod.AnalyticsTable),
-  { ssr: false, loading: () => <div className="h-[400px] w-full animate-pulse bg-neutral-900 rounded-3xl mt-6 border border-neutral-800" /> }
+  { loading: () => <div className="h-[400px] w-full animate-pulse bg-neutral-900 rounded-3xl mt-6 border border-neutral-800" /> }
 );
 
 export default function AnalyticsPage() {

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 
 const FinancialDashboard = dynamic(
   () => import('@/features/finances/components/financial-dashboard').then(mod => mod.FinancialDashboard),
-  { ssr: false, loading: () => <div className="h-[600px] w-full animate-pulse bg-neutral-900 rounded-3xl mt-6 border border-neutral-800" /> }
+  { loading: () => <div className="h-[600px] w-full animate-pulse bg-neutral-900 rounded-3xl mt-6 border border-neutral-800" /> }
 );
 
 export const metadata: Metadata = {

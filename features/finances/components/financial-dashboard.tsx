@@ -94,7 +94,7 @@ export function FinancialDashboard() {
                 <Tooltip 
                   cursor={{ fill: '#171717' }}
                   contentStyle={{ backgroundColor: '#0a0a0a', borderColor: '#262626', borderRadius: '12px' }}
-                  formatter={(value: number) => formatCurrency(value)}
+                  formatter={(value) => formatCurrency(Number(value))}
                 />
                 <Bar dataKey="ingresos" name="Ingresos" fill="#10b981" radius={[4, 4, 0, 0]} />
                 <Bar dataKey="gastos" name="Gastos" fill="#ef4444" radius={[4, 4, 0, 0]} />
@@ -125,7 +125,7 @@ export function FinancialDashboard() {
                 </Pie>
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#0a0a0a', borderColor: '#262626', borderRadius: '12px' }}
-                  formatter={(value: number) => formatCurrency(value)}
+                  formatter={(value) => formatCurrency(Number(value))}
                 />
               </PieChart>
             </ResponsiveContainer>

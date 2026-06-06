@@ -37,7 +37,7 @@ export function AnalyticsCharts({ monthlyTrend, provinceDistribution }: Analytic
               <YAxis stroke="#737373" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(val) => `$${val/1000000}M`} />
               <Tooltip 
                 contentStyle={{ backgroundColor: '#0a0a0a', borderColor: '#262626', borderRadius: '12px' }}
-                formatter={(value: number) => formatCurrency(value)}
+                formatter={(value) => formatCurrency(Number(value))}
               />
               <Area type="monotone" dataKey="revenue" name="Ingresos Brutos" stroke="#10b981" fillOpacity={1} fill="url(#colorRevenue)" strokeWidth={2} />
               <Area type="monotone" dataKey="expenses" name="Gastos Totales" stroke="#ef4444" fillOpacity={1} fill="url(#colorExpenses)" strokeWidth={2} />

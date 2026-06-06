@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import Map, { Marker, Popup, Source, Layer, useMap } from 'react-map-gl/maplibre';
+import Map, { Marker, Popup, Source, Layer, useMap, type ViewState } from 'react-map-gl/maplibre';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { TrackedTrip, ARGENTINA_CENTER, DEFAULT_ZOOM, FOCUSED_ZOOM, TRACKING_STATUS_COLORS } from '@/types/tracking';
 
@@ -30,7 +30,7 @@ function MapController({ selectedTrip }: { selectedTrip: TrackedTrip | null }) {
 }
 
 export function TrackingMap({ trips, selectedTrip, onSelectTrip }: TrackingMapProps) {
-  const [viewState, setViewState] = React.useState({
+  const [viewState, setViewState] = React.useState<Partial<ViewState>>({
     longitude: ARGENTINA_CENTER.lng,
     latitude: ARGENTINA_CENTER.lat,
     zoom: DEFAULT_ZOOM,
@@ -44,7 +44,7 @@ export function TrackingMap({ trips, selectedTrip, onSelectTrip }: TrackingMapPr
         {...viewState}
         onMove={evt => setViewState(evt.viewState)}
         mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
-        attributionControl={true}
+        attributionControl={{compact: true}}
         interactive={true}
         dragRotate={true}
         pitchWithRotate={true}
@@ -83,7 +83,7 @@ export function TrackingMap({ trips, selectedTrip, onSelectTrip }: TrackingMapPr
                     style={{ 
                       backgroundColor: color, 
                       border: '2px solid white',
-                      boxShadow: isSelected ? \`0 0 0 4px \${color}40\` : 'none'
+                      boxShadow: isSelected ? `0 0 0 4px ${color}40` : 'none'
                     }}
                   >
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -116,7 +116,7 @@ export function TrackingMap({ trips, selectedTrip, onSelectTrip }: TrackingMapPr
                   className="text-[10px] font-bold px-2 py-0.5 rounded-full"
                   style={{
                     color: TRACKING_STATUS_COLORS[selectedTrip.status],
-                    backgroundColor: \`\${TRACKING_STATUS_COLORS[selectedTrip.status]}20\`,
+                    backgroundColor: `${TRACKING_STATUS_COLORS[selectedTrip.status]}20`,
                   }}
                 >
                   {selectedTrip.status.replace('_', ' ')}
@@ -135,7 +135,7 @@ export function TrackingMap({ trips, selectedTrip, onSelectTrip }: TrackingMapPr
       </Map>
 
       {/* Global styles for popup to ensure dark mode looks great */}
-      <style dangerouslySetInnerHTML={{__html: \`
+      <style dangerouslySetInnerHTML={{__html: `
         .maplibregl-popup-content {
           background: transparent !important;
           padding: 0 !important;
@@ -149,9 +149,9 @@ export function TrackingMap({ trips, selectedTrip, onSelectTrip }: TrackingMapPr
           color: #fff !important;
         }
         .maplibregl-ctrl-attrib a {
-          color: #aaa !important;
+          color: #60a5fa !important;
         }
-      \`}} />
+      `}} />
 
       {/* Connection Status Indicator */}
       <div className="absolute top-4 left-4 z-[10] flex items-center gap-2 bg-neutral-900/90 backdrop-blur-md border border-neutral-800 rounded-full px-3 py-1.5 shadow-lg">
