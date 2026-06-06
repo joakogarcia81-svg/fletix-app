@@ -39,6 +39,7 @@ export function Avatar({ className, size, color, src, alt, fallback, ...props }:
   return (
     <div className={cn(avatarVariants({ size, color }), className)} {...props}>
       {src && !imgError ? (
+        /* eslint-disable-next-line @next/next/no-img-element */
         <img
           src={src}
           alt={alt || fallback}
